@@ -31,5 +31,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: remitano
-    volumes:
-      - ./database/data:/var/lib/mysql
