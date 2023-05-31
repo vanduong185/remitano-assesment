@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getListMovies } from "../../api/movies";
 import { Movie } from "../../api/movies/typings";
 import MovieItem from "../../components/MovieItem";
+import WebSocket from "../../components/WebSocket";
 
 export default function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -33,6 +34,7 @@ export default function Home() {
           movies.map((movie) => <MovieItem key={movie.id} movie={movie} />)
         )}
       </Box>
+      <WebSocket />
     </Container>
   );
 }
