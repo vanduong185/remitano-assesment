@@ -41,7 +41,10 @@ export class AuthService {
       throw new NotFoundException('User not found');
     }
 
-    const isValidPassword = this.comparePassword(dto.password, user.password);
+    const isValidPassword = await this.comparePassword(
+      dto.password,
+      user.password,
+    );
 
     if (!isValidPassword) {
       throw new BadRequestException('Password is invalid');

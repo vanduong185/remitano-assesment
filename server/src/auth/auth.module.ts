@@ -1,3 +1,4 @@
+import { JwtStrategy } from './strategies/jwt.strategy';
 import { UsersModule } from './../users/users.module';
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -10,10 +11,11 @@ import {
   AUTH_JWT_PUBLIC_KEY,
 } from './constants/auth.const';
 import { JwtModule } from '@nestjs/jwt';
+import { PublicStrategy } from './strategies/public.strategy';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, ...authProviders],
+  providers: [AuthService, JwtStrategy, PublicStrategy, ...authProviders],
   imports: [
     UsersModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
