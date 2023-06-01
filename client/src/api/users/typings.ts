@@ -9,3 +9,13 @@ export type User = {
   username: string;
   password: string;
 };
+
+export type Token = {
+  tokenInfo: string;
+  expiredIn: string;
+};
+
+export type SignInResponse = {
+  user: User;
+  token: Token;
+};

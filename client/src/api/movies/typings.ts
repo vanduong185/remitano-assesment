@@ -16,7 +16,6 @@ export type MovieDetails = {
 };
 
 export type ShareMoviePayload = {
-  userId: number;
   movieUrl: string;
   movieTitle: string;
   movieDescription: string;

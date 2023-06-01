@@ -37,7 +37,7 @@ export default function Header() {
         </Link>
         {user ? (
           <Actions>
-            <Typography>Welcome {user?.username || ""}</Typography>
+            <Typography mr={6}>👋 {user?.username || ""}</Typography>
             <Link to="/share">Share a movie</Link>
             <Link to="" onClick={handleLogOut}>
               Logout

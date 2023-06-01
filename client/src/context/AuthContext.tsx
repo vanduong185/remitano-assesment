@@ -7,10 +7,11 @@ import React, {
   useState,
 } from "react";
 import { signIn } from "../api/users";
-import { User } from "../api/users/typings";
+import { Token, User } from "../api/users/typings";
 
 export interface AuthState {
   user?: User;
+  token?: Token;
   logIn: (username: string, password: string) => Promise<User | undefined>;
   logOut: () => void;
 }
@@ -30,18 +31,28 @@ export interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps): ReactElement => {
   const [user, setUser] = useState<User>();
+  const [token, setToken] = useState<Token>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const localUser = localStorage.getItem("c_user");
-    setUser(localUser ? JSON.parse(localUser) : undefined);
+    const userLocal = localStorage.getItem("c_user");
+    const userData = userLocal ? JSON.parse(userLocal) : undefined;
+    if (userData) {
+      setUser(userData.user);
+      setToken(userData.token);
+    }
     setLoading(false);
   }, []);
 
   const logIn = async (username: string, password: string) => {
-    const user = await signIn({ username, password });
-    setUser(user);
-    return user;
+    const response = await signIn({ username, password });
+    if (response) {
+      localStorage.setItem("c_user", JSON.stringify(response));
+      const { user, token } = response;
+      setUser(user);
+      setToken(token);
+      return user;
+    }
   };
 
   const logOut = () => {
@@ -51,6 +62,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): ReactElement => {
 
   const value: AuthState = {
     user,
+    token,
     logIn,
     logOut,
   };

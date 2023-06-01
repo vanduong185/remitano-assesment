@@ -56,7 +56,7 @@ export class AuthService {
       user,
       token: {
         tokenInfo: token,
-        expiredIn: dayjs().add(AUTH_JWT_EXPIRED_TIME, 'millisecond').toDate(),
+        expiredIn: dayjs().add(AUTH_JWT_EXPIRED_TIME, 'second').toDate(),
       },
     };
   }

@@ -5,7 +5,16 @@ const instance = axiosModule.create({
 });
 
 instance.interceptors.request.use(async (config) => {
-  // TODO: inject token
+  const userLocal = localStorage.getItem("c_user");
+  const userData = userLocal ? JSON.parse(userLocal) : undefined;
+  if (userData) {
+    const { token } = userData;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    config.headers = {
+      ...config.headers,
+      Authorization: `Bearer ${token.tokenInfo}`,
+    };
+  }
   return config;
 });
 
