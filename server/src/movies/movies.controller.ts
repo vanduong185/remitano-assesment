@@ -1,10 +1,10 @@
 import { MoviesEmitter } from './emitters/movie.emitter';
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CreateMovieDto } from 'src/movies/dto/create-movie.dto';
 import { AuthUser } from '../auth/decorators/auth-user.decorator';
 import { Auth } from '../auth/decorators/http.decorators';
 import { User } from '../users/models/user.model';
 import { MoviesService } from './movies.service';
+import { CreateMovieDto } from './dto/create-movie.dto';
 
 @Controller('movies')
 export class MoviesController {

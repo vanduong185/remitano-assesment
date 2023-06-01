@@ -21,6 +21,16 @@ export class AuthService {
   ) {}
 
   async signUp(dto: RegisterUserDto) {
+    const user = await this.userService.findOne({
+      where: {
+        username: dto.username,
+      },
+    });
+
+    if (user) {
+      throw new NotFoundException('User already existed');
+    }
+
     const pass = await this.hashPassword(dto.password);
 
     const newUser = await this.userService.create({ ...dto, password: pass });
