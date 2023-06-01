@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-container css-1423t8p-MuiGrid-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+    >
+      <div
+        class="css-1fumm8e"
+      >
+        <iframe
+          class="css-122y91a"
+          frameborder="0"
+          src="https://www.youtube.com/watch?v=B8p1NB9eYcM"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+    >
+      <h5
+        class="MuiTypography-root MuiTypography-h5 css-1jcm1rz-MuiTypography-root"
+      >
+        title
+      </h5>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-z2eky3-MuiTypography-root"
+      >
+        Shared by: 
+        username
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+      >
+        Description: 
+        description
+      </p>
+    </div>
+  </div>
+</div>
+`;

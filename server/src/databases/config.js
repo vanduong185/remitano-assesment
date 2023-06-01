@@ -1,10 +1,10 @@
 module.exports = {
   development: {
     dialect: 'mysql',
-    host: 'localhost',
-    port: 3380,
+    host: 'db',
+    port: 3306,
     username: 'root',
-    password: 'password',
+    password: 'root',
     database: 'remitano',
   },
 };

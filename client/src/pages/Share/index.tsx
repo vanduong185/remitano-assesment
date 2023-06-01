@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Field, FormField } from "./typings";
-import { parseVideoIdFromYoutubeLink } from "./helper";
+import { parseVideoIdFromYoutubeLink } from "../../utilities/helper";
 import { getMovieDetail, shareMovie } from "../../api/movies";
 import { AuthState, useAuth } from "../../context/AuthContext";
 
@@ -38,7 +38,6 @@ export default function Share() {
         const movie = await getMovieDetail(movieId);
         if (movie && user) {
           const { data } = await shareMovie({
-            userId: user.id,
             movieUrl: `https://www.youtube.com/embed/${movie.movieId}`,
             movieTitle: movie.title,
             movieDescription: movie.description?.substring(0, 100),
