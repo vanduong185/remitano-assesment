@@ -15,7 +15,10 @@ export interface AuthState {
   logOut: () => void;
 }
 
-const AuthContext = createContext<AuthState | null>(null);
+const AuthContext = createContext<AuthState | null>({
+  logIn: (username: string, password: string) => Promise.resolve(undefined),
+  logOut: () => Promise.resolve(),
+});
 
 export const useAuth = (): AuthState | null => {
   return useContext(AuthContext);
