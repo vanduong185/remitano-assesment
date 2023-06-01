@@ -1,4 +1,10 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import {
+  Column,
+  CreatedAt,
+  Model,
+  Table,
+  UpdatedAt,
+} from 'sequelize-typescript';
 
 @Table
 export class User extends Model<User> {
@@ -15,8 +21,10 @@ export class User extends Model<User> {
   isActive: boolean;
 
   @Column({ type: 'timestamp' })
+  @CreatedAt
   createdAt?: any;
 
   @Column({ type: 'timestamp' })
+  @UpdatedAt
   updatedAt?: any;
 }
