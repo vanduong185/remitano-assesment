@@ -21,7 +21,14 @@ export class MoviesController {
       userId: user.id,
     });
 
-    this.movieEmitter.emitNewMovieNotification(newMovie);
+    const data = await this.moviesService.findOne({
+      where: {
+        id: newMovie.id,
+      },
+      include: { model: User, attributes: ['username'] },
+    });
+
+    this.movieEmitter.emitNewMovieNotification(data);
 
     return newMovie;
   }
