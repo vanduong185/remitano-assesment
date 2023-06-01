@@ -69,11 +69,6 @@ export class AuthService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
-  }
-
   private async hashPassword(password: any) {
     const hash = await bcrypt.hash(password, 10);
     return hash;
